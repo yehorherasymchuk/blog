@@ -22,7 +22,7 @@ Route::group([
         'auth',
     ],
 ], function () {
-    Route::resource('posts', 'Cms\PostsController');
+    Route::resource('posts', 'Cms\Posts\PostsController');
 });
 
 Route::get('/', 'HomeController@index')->name('home');

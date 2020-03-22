@@ -42,6 +42,15 @@ class Post extends Model
     const STATUS_DRAFT = 10;
     const STATUS_PUBLISHED = 20;
 
+    public $fillable = [
+        'status',
+        'locale',
+        'slug',
+        'title',
+        'excerpt',
+        'body',
+        'author_id',
+    ];
 
     public function author()
     {

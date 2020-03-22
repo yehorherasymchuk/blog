@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Cms;
+namespace App\Http\Controllers\Cms\Posts;
 
+
+use View;
+use App\Http\Controllers\Cms\Posts\Requests\StorePostRequest;
+use App\Http\Controllers\Cms\Posts\Requests\UpdatePostRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Services\Posts\PostsService;
-use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
@@ -22,7 +25,7 @@ class PostsController extends Controller
 
     public function index()
     {
-        \View::share([
+        View::share([
             'posts' => $this->postsService->search([]),
         ]);
 
@@ -34,14 +37,17 @@ class PostsController extends Controller
         return view('cms.posts.create');
     }
 
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
-        //
+        $post = $this->postsService->create($request->getFormData());
+        return redirect()->route('cms.posts.show', [
+            'post' => $post->id,
+        ]);
     }
 
     public function show(Post $post)
     {
-        \View::share([
+        View::share([
             'post' => $post,
         ]);
         return view('cms.posts.show');
@@ -49,15 +55,18 @@ class PostsController extends Controller
 
     public function edit(Post $post)
     {
-        \View::share([
+        View::share([
             'post' => $post,
         ]);
-        return view('cms.posts.show');
+        return view('cms.posts.edit');
     }
 
-    public function update(Request $request, Post $post)
+    public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $post = $this->postsService->update($post, $request->getFormData());
+        return redirect()->route('cms.posts.show', [
+            'post' => $post->id,
+        ]);
     }
 
     public function destroy(Post $post)

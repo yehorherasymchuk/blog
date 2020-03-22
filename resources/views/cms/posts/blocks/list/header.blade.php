@@ -7,5 +7,6 @@
     <th scope="col">@lang('cms.posts.slug')</th>
     <th scope="col">@lang('cms.posts.author')</th>
     <th scope="col">@lang('cms.posts.updated')</th>
+    <th scope="col"></th>
 </tr>
 </thead>

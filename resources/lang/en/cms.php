@@ -3,12 +3,15 @@
 return [
     'cms' => 'CMS',
     'create' => 'Create',
+    'update' => 'Update',
     'posts' => [
         'posts' => 'Posts',
         'status' => 'Status',
         'title' => 'Title',
         'locale' => 'Locale',
         'slug' => 'Slug',
+        'excerpt' => 'Excerpt',
+        'body' => 'Body',
         'author' => 'Author',
         'updated' => 'Updated',
         'statuses' => [

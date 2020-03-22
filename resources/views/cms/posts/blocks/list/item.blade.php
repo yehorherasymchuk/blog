@@ -8,4 +8,7 @@
     <td>{{ $post->slug }}</td>
     <td>{{ $post->author->name }}</td>
     <td>{{ $post->updated_at->format('Y.m.d') }}</td>
+    <td>
+        {{ link_to(route('cms.posts.edit', ['post' => $post->id]), __('cms.update')) }}
+    </td>
 </tr>
