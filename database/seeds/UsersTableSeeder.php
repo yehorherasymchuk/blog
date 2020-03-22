@@ -12,10 +12,12 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         factory(\App\Models\User::class, 50)->create();
-        factory(\App\Models\User::class, 1)->create([
-            'email' => 'egor@dotsblog.test',
-            'password' => Hash::make('egor@dotsblog.test'),
-            'level' => \App\Models\User::LEVEL_ADMIN,
-        ]);
+        if (!\App\Models\User::whereEmail('egor@dotsblog.test')->first()) {
+            factory(\App\Models\User::class, 1)->create([
+                'email' => 'egor@dotsblog.test',
+                'password' => Hash::make('egor@dotsblog.test'),
+                'level' => \App\Models\User::LEVEL_ADMIN,
+            ]);
+        }
     }
 }
