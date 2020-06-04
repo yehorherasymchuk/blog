@@ -2,6 +2,7 @@
 
 @section('content')
     @php
+        App::setLocale('ru');
         $breadcrumbs = [
             [
                 'url' => route('cms.posts.index'),
